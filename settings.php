@@ -172,7 +172,7 @@ foreach ($set as $categoryname => $setinfos) {
         "local_oc_seasonal_animations/{$settingpre}start_random",
         get_string('settings:general:start_random', 'local_oc_seasonal_animations'),
         get_string('settings:general:start_random_desc', 'local_oc_seasonal_animations'),
-        $defaults['start_random'] ??  true
+        $defaults['start_random'] ?? true
     );
     $selectedstartposition = get_config('local_oc_seasonal_animations', "{$settingpre}start_position");
     if ($selectedstartposition) {

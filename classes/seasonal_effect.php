@@ -36,23 +36,23 @@ class seasonal_effect {
     /**
      * Prefix constants for configuration keys per season
      */
-    const SEASONLESS = 'seasonless_';
+    private const SEASONLESS = 'seasonless_';
     /**
      * Prefix constants for configuration keys per season
      */
-    const SPRING = 'spring_';
+    private const SPRING = 'spring_';
     /**
      * Prefix constants for configuration keys per season
      */
-    const SUMMER = 'summer_';
+    private const SUMMER = 'summer_';
     /**
      * Prefix constants for configuration keys per season
      */
-    const AUTUMN = 'autumn_';
+    private const AUTUMN = 'autumn_';
     /**
      * Prefix constants for configuration keys per season
      */
-    const WINTER = 'winter_';
+    private const WINTER = 'winter_';
 
     /**
      * Injects the snow effect HTML and JavaScript into the Moodle page.
