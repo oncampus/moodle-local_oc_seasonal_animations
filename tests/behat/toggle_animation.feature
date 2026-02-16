@@ -1,12 +1,12 @@
-@local @local_eledia_snow_effect @oncampus @javascript
+@local @local_oc_seasonal_animations @oncampus @javascript
 Feature: The seasonal effects can be toggled by a button
 
   Background:
     Given I log in as "user"
     And the following config values are set as admin:
-      | config                | value | plugin                   |
-      | season_change_enabled | 0     | local_eledia_snow_effect |
-      | seasonless_enabled    | 1     | local_eledia_snow_effect |
+      | config                | value | plugin                       |
+      | season_change_enabled | 0     | local_oc_seasonal_animations |
+      | seasonless_enabled    | 1     | local_oc_seasonal_animations |
 
   Scenario: The effect is active by default on frontpage and homepage
     Given I am on front page

@@ -15,13 +15,13 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Registers local_eledia_snow_effect callbacks to Moodle core hooks.
+ * Registers local_oc_seasonal_animations callbacks to Moodle core hooks.
  *
  * This file binds plugin logic to Moodle's hook system. In this case,
  * it connects the `before_footer_html_generation` hook to inject seasonal
  * effects on applicable pages.
  *
- * @package    local_eledia_snow_effect
+ * @package    local_oc_seasonal_animations
  * @author     Konrad Ebel <konrad.ebel@oncampus.de>
  * @copyright  2025, onCampus GmbH
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later

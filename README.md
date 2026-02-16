@@ -1,114 +1,126 @@
-# Saisonale Effekte
+# Seasonal Effects
 
-Saisonale Effekte ist ein **lokales Plugin** für Moodle, welches animierte visuelle Partikeleffekte (z. B. Schnee, Blätter, Sonnenstrahlen) auf Startseite und Dashboard anzeigt. Es kann sich automatisch an die Jahreszeit anpassen oder manuell konfiguriert werden.
+Seasonal Effects is a **local plugin** for Moodle that displays animated visual particle effects (e.g. snow, leaves, sunbeams) on the home page and dashboard. It can automatically adjust to the season or be configured manually.
 
 ## Features
 
-- Automatische visuelle Effekte je nach Jahreszeit (Frühling, Sommer, Herbst, Winter)
-- Zwei Partikeltypen: Schneepunkte oder benutzerdefinierte Bilder
-- Zwei Animationsmodi: Bewegung (inkl. Rotation) oder Ein-/Ausblenden
-- Konfigurierbare Partikeleigenschaften wie Anzahl, Größe, Farbe, Geschwindigkeit
-- Umschaltknopf zur Aktivierung/Deaktivierung der Effekte je Nutzer
+- Automatic visual effects depending on the season (spring, summer, autumn, winter)
+- Configurable start positions
+  - Corner (Multiple random, single and distance)
+  - Totally random
+- Configurable particle types:
+  - snowflakes
+  - custom images
+- Configurable Animation modes:
+  - movement (including rotation)
+  - fade in/out
+- Configurable particle properties
+  - number
+  - size
+  - colour
+  - speed
+  - and more
+- Toggle button to activate/deactivate effects per user
 
 ## Installation
 
-1. Klone das Repository in das Verzeichnis:
+1. Clone the repository into the directory:
 ```
 /local/oc_seasonal_animations
 ```
-2. Rufe `Website-Administration` auf oder führe:
+2. Open `Website Administration` or run:
 ```
 php admin/cli/upgrade.php
 ```
-aus, um die Installation abzuschließen.
+to complete the installation.
 
-## Voraussetzungen
+## Requirements
 
-Keine externen Abhängigkeiten.
+No external dependencies.
 
-## Konfiguration
-Nach der Installation ist das Plugin über folgenden Pfad konfigurierbar:
+## Configuration
+After installation, the plugin can be configured via the following path:
 
     Website-Administration → Plugins → Lokale Plugins → Saisonale Effekte
 
-Das Plugin bietet für jede Jahreszeit eine eigene Einstellungsseite:
-- Ganzjährig (Seasonless)
-- Frühling (Spring)
-- Sommer (Summer)
-- Herbst (Autumn)
-- Winter (Winter)
-Dort können jeweils eigene Werte für Verhalten, Partikel und Darstellung festgelegt werden.
+The plugin offers a separate settings page for each season:
+- All year round (Seasonless)
+- Spring
+- Summer
+- Autumn
+- Winter
 
-Zudem gibt es eine globale Option:
-- Saisonwechsel aktivieren: Wechselt die aktive Jahreszeit automatisch basierend auf dem Monat.
+There you can set your own values for behaviour, particles and start position.
 
-### Allgemein
-- Effekte aktivieren: Schaltet den Effekt für die jeweilige Saison ein oder aus.
-- Partikelanzahl: Anzahl der gleichzeitig sichtbaren Partikel.
-- Partikeltyp: Auswahl zwischen Bild oder Schnee.
-- Startposition: Zufällige Position oder von einem Ankerpunkt am Rand.
-- Verhalten: Partikel bewegen sich (inkl. Rotation) oder blenden ein/aus.
-- Z-Index Ebene: Definiert, ob Partikel vor oder hinter anderen Inhalten erscheinen.
+There is also a global option:
+- Enable season change: Automatically changes the active season based on the month.
 
-Bild-Partikel
-- Bild hochladen: Eigene PNG-, JPG- oder GIF-Datei als Partikelbild verwenden.
-- Größe: Zufälliger Bereich (min/max), z. B. 10;50.
-- Transparenz: Bereich für Start-Opacity der Partikel.
+### General
+- Enable effects: Turns the effect on or off for the respective season.
+- Particle count: Number of particles visible at the same time.
+- Particle type: Choose between image or snow.
+- Start position: Random position or from an anchor point at the edge.
+- Behaviour: Particles move (including rotation) or fade in/out.
+- Z-index layer: Defines whether particles appear in front of or behind other content.
 
-Schnee-Partikel
-- Farbe: Hex-Wert für Schneefarbe (z. B. #ffffff).
-- Größe: Zufälliger Bereich.
-- Transparenz: Starttransparenz zwischen 0 und 1.
+Image particles
+- Upload image: Use your own PNG, JPG or GIF file as a particle image.
+- Size: Random range (min/max), e.g. 10;50.
+- Transparency: Range for the starting opacity of the particles.
 
-Bewegungsverhalten
-- Randgrenze: Abstand vom Rand, ab dem Partikel neu positioniert werden.
-- Horizontale & Vertikale Geschwindigkeit: Basisbewegung in Pixel pro Frame.
-- Rotationsgeschwindigkeit: Drehrate in Grad.
-- Zufällige Variationen: Sinusbasierte Geschwindigkeitsmodifikatoren.
+Snow particles
+- Colour: Hex value for snow colour (e.g. #ffffff).
+- Size: Random range.
+- Transparency: Start transparency between 0 and 1.
 
-Fade-Verhalten
-- Fade-Geschwindigkeit: Geschwindigkeit des Ein-/Ausblendens pro Frame.
+Movement behaviour
+- Edge boundary: Distance from the edge at which particles are repositioned.
+- Horizontal & vertical speed: Basic movement in pixels per frame.
+- Rotation speed: Rotation rate in degrees.
+- Random variations: Sine-based speed modifiers.
 
-Anker-Startposition
-- Startseiten: Definiert, an welchen Bildschirmrändern Partikel erscheinen.
-- Abstand vom Rand: Bereich in Pixeln vom Rand zur Startposition.
+Fade behaviour
+- Fade speed: Speed of fade-in/fade-out per frame.
 
-## Nutzung
+Anchor start position
+- Start pages: Defines at which screen edges particles appear.
+- Distance from edge: Area in pixels from the edge to the start position.
 
-Das Plugin ist aktiv auf:
+## Usage
+The plugin is active on:
 
-- **Startseite** (`site-index`)
+- **Home page** (`site-index`)
 - **Dashboard** (`my-index`)
 
-Ein Button zur Togglen der Animation wird eingeblendet. Nutzer können Animationen für ihre Session deaktivieren.
+A button for toggling the animation is displayed. Users can disable animations for their session.
 
-### Saisonvorschau
+### Season preview
 
-Admin-Vorschau eines bestimmten Saisontyps:
+Admin preview of a specific season type:
 ```
 /local/local_oc_seasonal_animations/preview.php?season=winter_
 ```
 
-Verfügbare Werte: `seasonless_`, `spring_`, `summer_`, `autumn_`, `winter_`
+Available values: `seasonless_`, `spring_`, `summer_`, `autumn_`, `winter_`
 
-## Rechte
+## Rights
 
-Kein Vorhanden.
+None available.
 
-## Cronjobs
+## Cron jobs
 
-Keine Vorhanden
+None available
 
-## Web Services
+## Web services
 
-Keine Vorhanden
+None available
 
-## Lizenz
+## Licence
 
-Dieses Plugin ist lizensiert unter der [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl.html).
+This plugin is licensed under the [GNU General Public Licence v3.0](https://www.gnu.org/licenses/gpl.html).
 
 ## Credits
 
 **Autor**: Konrad Ebel (konrad.ebel@oncampus.de)  
-**© 2025**, onCampus GmbH
+**© 2025**, oncampus GmbH
 
