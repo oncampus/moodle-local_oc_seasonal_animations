@@ -33,6 +33,7 @@ $string['min'] = 'min.';
 $string['pluginname'] = 'Saisonale Effekte';
 $string['preview:heading'] = 'Vorschau des saisonalen Effekts: {$a}';
 $string['preview:title'] = 'Vorschau vom {$a}-Effekt';
+$string['privacy:metadata'] = 'Speichert keine persönlichen Daten über Nutzer.';
 $string['settings:anchor_start'] = 'Anker Startposition Einstellungen';
 $string['settings:autumn'] = 'Herbst';
 $string['settings:behavior:fade:speed'] = 'Ein- / Ausblendgeschwindigkeit';

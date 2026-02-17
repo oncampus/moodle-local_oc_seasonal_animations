@@ -33,6 +33,7 @@ $string['min'] = 'min.';
 $string['pluginname'] = 'Seasonal Effects';
 $string['preview:heading'] = 'Seasonal Effect Preview: {$a}';
 $string['preview:title'] = 'Preview {$a} effect';
+$string['privacy:metadata'] = 'Doesnt save personal data about users.';
 $string['settings:anchor_start'] = 'Anchor start settings';
 $string['settings:autumn'] = 'Autumn';
 $string['settings:behavior:fade:speed'] = 'Fade speed';
