@@ -15,7 +15,7 @@ Feature: There should be different particle types
       | seasonless_particle_type          | image-particle | local_oc_seasonal_animations |
       | seasonless_particle_image_size    | 30;0           | local_oc_seasonal_animations |
       | seasonless_particle_image_opacity | 0.3;0          | local_oc_seasonal_animations |
-    When I am on front page
+    And I am on homepage
     Then "image-particle" "css_element" should exist
     And the "style" attribute of "image-particle" "css_element" should contain "width: 30px"
     And the "style" attribute of "image-particle" "css_element" should contain "height: 30px"
@@ -29,7 +29,7 @@ Feature: There should be different particle types
       | seasonless_particle_snow_size    | 30;0          | local_oc_seasonal_animations |
       | seasonless_particle_snow_opacity | 0.3;0         | local_oc_seasonal_animations |
       | seasonless_particle_snow_color   | #039CC3       | local_oc_seasonal_animations |
-    When I am on front page
+    And I am on homepage
     Then "snow-particle" "css_element" should exist
     And the "style" attribute of "snow-particle" "css_element" should contain "width: 30px"
     And the "style" attribute of "snow-particle" "css_element" should contain "height: 30px"

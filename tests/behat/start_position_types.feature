@@ -17,7 +17,7 @@ Feature: There should be different start position types, which can
       | config                                | value  | plugin                       |
       | seasonless_startpos_anchor_bordersite | t      | local_oc_seasonal_animations |
       | seasonless_startpos_anchor_distance   | -100;0 | local_oc_seasonal_animations |
-    When I am on front page
+    And I am on homepage
     Then "image-particle" "css_element" should exist
     And the "style" attribute of "image-particle" "css_element" should contain "top: -100px"
 
@@ -26,6 +26,6 @@ Feature: There should be different start position types, which can
       | config                                | value  | plugin                       |
       | seasonless_startpos_anchor_bordersite | l      | local_oc_seasonal_animations |
       | seasonless_startpos_anchor_distance   | 100;0  | local_oc_seasonal_animations |
-    When I am on front page
+    And I am on homepage
     Then "image-particle" "css_element" should exist
     And the "style" attribute of "image-particle" "css_element" should contain "left: 100px"
