@@ -55,6 +55,10 @@ class hook_callbacks {
         }
 
         $configs = seasonal_effect::get_current_configs();
+        if (!$configs['enabled']) {
+            return;
+        }
+
         $hook->add_html(seasonal_effect::get_seasonal_effect_html());
         seasonal_effect::render($configs);
     }
