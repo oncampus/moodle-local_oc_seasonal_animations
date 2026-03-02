@@ -64,8 +64,9 @@ $string['settings:general:behavior_desc'] = 'Wählen Sie das Verhalten der Parti
 $string['settings:general:enabled'] = 'Effekte aktivieren';
 $string['settings:general:enabled_desc'] = 'Aktivieren oder deaktivieren Sie den saisonalen Effekt.';
 $string['settings:general:layer'] = 'Z-Index Ebene';
-$string['settings:general:layer_desc'] = 'CSS-Z-Index für den saisonalen Effekt. Verwenden Sie -1, um ihn hinter dem Inhalt zu platzieren. '
-    . 'Warnung: Die Verwendung höherer Werte kann die Barrierefreiheit beeinträchtigen.';
+$string['settings:general:layer_desc'] = 'CSS-Z-Index für den saisonalen Effekt.
+ Verwenden Sie -1, um ihn hinter dem Inhalt zu platzieren.
+ Warnung: Die Verwendung höherer Werte kann die Barrierefreiheit beeinträchtigen.';
 $string['settings:general:particle_count'] = 'Anzahl der Partikel';
 $string['settings:general:particle_count_desc'] = 'Anzahl der Partikel, die auf dem Bildschirm angezeigt werden.';
 $string['settings:general:particle_type'] = 'Partikeltyp';
@@ -82,8 +83,8 @@ $string['settings:image_particle'] = 'Individuelle Partikel Einstellungen';
 $string['settings:move_behavior'] = 'Bewegungsverhalten Einstellungen';
 $string['settings:overview:preview'] = 'Vorschau';
 $string['settings:overview:season_change_enabled'] = 'Saisonwechsel aktivieren';
-$string['settings:overview:season_change_enabled_desc'] = 'Effekte automatisch je nach Jahreszeit wechseln. '
-    . 'Die Einstellungen für Frühling, Sommer, Herbst und Winter werden verwendet.';
+$string['settings:overview:season_change_enabled_desc'] = 'Effekte automatisch je nach Jahreszeit wechseln.
+ Die Einstellungen für Frühling, Sommer, Herbst und Winter werden verwendet.';
 $string['settings:particle:image:image'] = 'Partikelbild';
 $string['settings:particle:image:image_desc'] = 'Laden Sie ein Bild hoch, das als Partikel verwendet wird.';
 $string['settings:particle:opacity'] = 'Transparenz';

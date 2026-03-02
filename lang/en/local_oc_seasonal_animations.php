@@ -64,8 +64,9 @@ $string['settings:general:behavior_desc'] = 'Select the behavior for particles.'
 $string['settings:general:enabled'] = 'Enable effects';
 $string['settings:general:enabled_desc'] = 'Enable or disable the seasonal effect.';
 $string['settings:general:layer'] = 'Z-index layer';
-$string['settings:general:layer_desc'] = 'Z-index CSS layer for the seasonal effect. Use -1 to place behind content. '
-    . 'Warning. Using higher numbers can decrease the accessibility.';
+$string['settings:general:layer_desc'] = 'Z-index CSS layer for the seasonal effect.
+ Use -1 to place behind content.
+ Warning. Using higher numbers can decrease the accessibility.';
 $string['settings:general:particle_count'] = 'Particle count';
 $string['settings:general:particle_count_desc'] = 'Number of particles to display on screen.';
 $string['settings:general:particle_type'] = 'Particle type';
@@ -82,8 +83,8 @@ $string['settings:image_particle'] = 'Custom particle settings';
 $string['settings:move_behavior'] = 'Move behavior settings';
 $string['settings:overview:preview'] = 'Preview';
 $string['settings:overview:season_change_enabled'] = 'Enable season changes';
-$string['settings:overview:season_change_enabled_desc'] = 'Automatically switch effects based on the season. '
-    . 'The settings for spring, summer, autumn, and winter will be used.';
+$string['settings:overview:season_change_enabled_desc'] = 'Automatically switch effects based on the season.
+ The settings for spring, summer, autumn, and winter will be used.';
 $string['settings:particle:image:image'] = 'Particle image';
 $string['settings:particle:image:image_desc'] = 'Upload an image to use as the particle.';
 $string['settings:particle:opacity'] = 'Opacity';
