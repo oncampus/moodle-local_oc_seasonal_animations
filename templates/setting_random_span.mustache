@@ -15,18 +15,52 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template core_admin/setting_configtext
+    @template local_oc_seasonal_animations/setting_random_span
 
-    Admin setting random span
+    Setting type randomspan.
+
+    Classes required for JS:
+    * none
+
+    Data attributes required for JS:
+    * none
+
+    Context variables required for this template:
+    * name -> Name of the config
+    * min -> Current minimum of range
+    * max -> Current maximum of range
+    * size -> Size of the text inputs
+    * readonly -> If form elements should be disabled
+
+    Example context (json):
+    {
+        "name": "behavior_move_vertical_random_span",
+        "min": 10,
+        "max": 30,
+        "size": 5,
+        "readonly": false,
+    }
 }}
-{{!
-    Setting randomspan.
-}}
+
+{{#name}}
 <div class="form-text defaultsnext">
     <label for="{{name}}[min]">{{#str}} min, local_oc_seasonal_animations{{/str}}</label>
-    <input type="text" name="{{name}}[min]" value="{{min}}" size="{{size}}" class="form-control ml-1"
-           {{#readonly}}disabled{{/readonly}}>
+    <input
+            type="text"
+            name="{{name}}[min]"
+            {{#min}} value="{{min}}" {{/min}}
+            {{#size}} size="{{size}}" {{/size}}
+            class="form-control ml-1"
+           {{#readonly}}disabled{{/readonly}}
+    >
     <label for="{{name}}[max]">{{#str}} max, local_oc_seasonal_animations{{/str}}</label>
-    <input type="text" name="{{name}}[max]" value="{{max}}" size="{{size}}" class="form-control ml-1"
-           {{#readonly}}disabled{{/readonly}}>
+    <input
+            type="text"
+            name="{{name}}[max]"
+            {{#max}} value="{{max}}" {{/max}}
+            {{#size}} size="{{size}}" {{/size}}
+            class="form-control ml-1"
+           {{#readonly}}disabled{{/readonly}}
+    >
 </div>
+{{/name}}
