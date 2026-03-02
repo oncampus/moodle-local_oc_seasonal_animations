@@ -44,8 +44,9 @@
 
 {{#name}}
 <div class="form-text defaultsnext">
-    <label for="{{name}}[min]">{{#str}} min, local_oc_seasonal_animations{{/str}}</label>
+    <label for="{{name}}_min">{{#str}} min, local_oc_seasonal_animations{{/str}}</label>
     <input
+            id="{{name}}_min"
             type="text"
             name="{{name}}[min]"
             {{#min}} value="{{min}}" {{/min}}
@@ -53,8 +54,9 @@
             class="form-control ml-1"
            {{#readonly}}disabled{{/readonly}}
     >
-    <label for="{{name}}[max]">{{#str}} max, local_oc_seasonal_animations{{/str}}</label>
+    <label for="{{name}}_max">{{#str}} max, local_oc_seasonal_animations{{/str}}</label>
     <input
+            id="{{name}}_max"
             type="text"
             name="{{name}}[max]"
             {{#max}} value="{{max}}" {{/max}}
