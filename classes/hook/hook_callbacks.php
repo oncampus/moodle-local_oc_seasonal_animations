@@ -38,6 +38,7 @@ class hook_callbacks {
      * Adds the seasonal effect to the frontpage and dashboard only,
      * by checking the current page type before injecting the effect.
      *
+     * @param before_footer_html_generation $hook Calling hook
      * @return void
      */
     public static function before_footer_html_generation(before_footer_html_generation $hook): void {

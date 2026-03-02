@@ -79,7 +79,7 @@ export class Effect extends HTMLElement {
      *
      * @type {Object}
      */
-    behavior= undefined;
+    behavior = undefined;
 
     /**
      * CSS z-index for the snow effect element.
