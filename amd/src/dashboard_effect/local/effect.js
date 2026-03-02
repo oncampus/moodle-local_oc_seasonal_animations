@@ -79,7 +79,7 @@ export class Effect extends HTMLElement {
      *
      * @type {Object}
      */
-    behavior =  undefined;
+    behavior= undefined;
 
     /**
      * CSS z-index for the snow effect element.
@@ -160,27 +160,39 @@ export class Effect extends HTMLElement {
             this.start();
         }
 
-        this.loadLanguageStrings().then(() => {
-            // Add event listener for toggle button.
-            const toggleBtn = document.getElementById('snowfall-toggle-btn');
-            if (toggleBtn) {
+        this.loadLanguageStrings()
+            .then(() => {
+                // Add event listener for toggle button.
+                const toggleBtn = document.getElementById('snowfall-toggle-btn');
+                if (!toggleBtn) {
+                    return false;
+                }
+
                 this.setToggleButtonText(toggleBtn);
+
+                const updateState = () => {
+                    const disabled = this.isActive;
+
+                    if (disabled) {
+                        this.stop();
+                    } else {
+                        this.start();
+                    }
+
+                    sessionStorage.setItem('snowEffectDisabled', String(!disabled));
+                    this.setToggleButtonText(toggleBtn);
+                };
 
                 toggleBtn.addEventListener('click', (e) => {
                     e.preventDefault();
-
-                    if (this.isActive) {
-                        this.stop();
-                        sessionStorage.setItem('snowEffectDisabled', 'true');
-                    } else {
-                        this.start();
-                        sessionStorage.setItem('snowEffectDisabled', 'false');
-                    }
-
-                    this.setToggleButtonText(toggleBtn);
+                    updateState();
                 });
-            }
-        });
+                return true;
+            })
+            .catch(() => {
+                window.console.error("Language string could not be loaded.");
+                return false;
+            });
     }
 
     /**
