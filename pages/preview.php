@@ -56,7 +56,9 @@ echo $OUTPUT->header();
 if (!in_array($season, $seasons)) {
     notification::error("$season is not a valid season");
 } else {
-    seasonal_effect::apply_to_page($season, true);
+    $configs = seasonal_effect::get_yeartime_configs($season);
+    echo seasonal_effect::get_seasonal_effect_html();
+    seasonal_effect::render($configs);
 }
 
 echo $OUTPUT->footer();

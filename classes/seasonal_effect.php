@@ -16,6 +16,7 @@
 
 namespace local_oc_seasonal_animations;
 
+use coding_exception;
 use context_system;
 use core\output\html_writer;
 use moodle_url;
@@ -55,26 +56,12 @@ class seasonal_effect {
     public const WINTER = 'winter_';
 
     /**
-     * Injects the snow effect HTML and JavaScript into the Moodle page.
+     * Adds a toggle button and the custom <snow-effect> element to the DOM
      *
-     * Adds a toggle button and the custom <snow-effect> element to the DOM,
-     * and loads the corresponding AMD module with season-based configurations.
-     *
-     * @param string|null $yeartime Optional season prefix (e.g., 'winter_').
-     * @param bool $force If true, ignores the 'enabled' setting and applies unconditionally.
-     * @return void
+     * @return string HTML code needed for the saisonal effects
+     * @throws coding_exception
      */
-    public static function apply_to_page(?string $yeartime = null, bool $force = false): void {
-        global $PAGE;
-
-        $configs = $yeartime ? self::get_yeartime($yeartime) : self::get_current_configs();
-
-        // Check if snowfall is enabled in settings.
-        if (!$force && !$configs['enabled']) {
-            return;
-        }
-
-        // Add toggle button.
+    public static function get_seasonal_effect_html(): string {
         $togglebutton = html_writer::tag(
             'button',
             get_string('disable_snowfall', 'local_oc_seasonal_animations'),
@@ -84,40 +71,20 @@ class seasonal_effect {
         // Include the toggle button and snow-effect element in the page.
         $html = html_writer::div($togglebutton, 'snowfall-toggle-container');
         $html .= html_writer::tag('snow-effect', '', ['id' => 'snow-component']);
-        $html .= "<style>
-                .btn-secondary {
-                    z-index: 3;
-                    position: relative;
-                }
+        return $html;
+    }
 
-                .activity-item {
-                    z-index: 3;
-                    position: relative;
-                }
+    /**
+     * Injects JavaScript into the Moodle page.
+     *
+     * loads the corresponding AMD module with season-based configurations.
+     *
+     * @param array $configs Configs for the wanted season.
+     * @return void
+     */
+    public static function render(array $configs): void {
+        global $PAGE;
 
-                .more-nav {
-                    position: relative;
-                    z-index: 3;
-                }
-
-                .coursebox {
-                    position: relative;
-                    z-index: 3;
-                    background-color: #fff;
-                }
-
-                .block-add {
-                    z-index: 3;
-                    position: relative;
-                }
-
-                .block {
-                    z-index: 3;
-                }
-          </style>";
-        echo $html;
-
-        // Load the AMD module.
         $PAGE->requires->js_call_amd(
             'local_oc_seasonal_animations/dashboard_effect',
             'init',
@@ -133,7 +100,7 @@ class seasonal_effect {
      * @param string $yeartime The seasonal configuration prefix.
      * @return array Associative array of configuration values.
      */
-    public static function get_yeartime(string $yeartime): array {
+    public static function get_yeartime_configs(string $yeartime): array {
         $allconfigs = (array) get_config('local_oc_seasonal_animations');
         $configs = [];
 
@@ -217,19 +184,19 @@ class seasonal_effect {
         $seasonalchange = get_config('local_oc_seasonal_animations', 'season_change_enabled');
 
         if (!$seasonalchange) {
-            return self::get_yeartime(self::SEASONLESS);
+            return self::get_yeartime_configs(self::SEASONLESS);
         }
 
         $month = date('n');
 
         if ($month >= 3 && $month <= 5) {
-            return self::get_yeartime(self::SPRING);
+            return self::get_yeartime_configs(self::SPRING);
         } else if ($month >= 6 && $month <= 8) {
-            return self::get_yeartime(self::SUMMER);
+            return self::get_yeartime_configs(self::SUMMER);
         } else if ($month >= 9 && $month <= 11) {
-            return self::get_yeartime(self::AUTUMN);
+            return self::get_yeartime_configs(self::AUTUMN);
         } else {
-            return self::get_yeartime(self::WINTER);
+            return self::get_yeartime_configs(self::WINTER);
         }
     }
 }

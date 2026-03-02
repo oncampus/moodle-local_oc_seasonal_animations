@@ -16,6 +16,7 @@
 
 namespace local_oc_seasonal_animations\hook;
 
+use core\hook\output\before_footer_html_generation;
 use local_oc_seasonal_animations\seasonal_effect;
 
 /**
@@ -39,7 +40,7 @@ class hook_callbacks {
      *
      * @return void
      */
-    public static function before_footer_html_generation(): void {
+    public static function before_footer_html_generation(before_footer_html_generation $hook): void {
         global $PAGE;
 
         // Check if current page is frontpage or dashboard.
@@ -52,6 +53,8 @@ class hook_callbacks {
             return;
         }
 
-        seasonal_effect::apply_to_page();
+        $configs = seasonal_effect::get_current_configs();
+        $hook->add_html(seasonal_effect::get_seasonal_effect_html());
+        seasonal_effect::render($configs);
     }
 }

@@ -55,6 +55,42 @@ There you can set your own values for behaviour, particles and start position.
 There is also a global option:
 - Enable season change: Automatically changes the active season based on the month.
 
+> Tip.
+> To enhance the look you can use custom css to let the important couse elements
+> stand out in front of the effect
+
+```
+.btn-secondary {
+    z-index: 3;
+    position: relative;
+}
+
+.activity-item {
+    z-index: 3;
+    position: relative;
+}
+
+.more-nav {
+    position: relative;
+    z-index: 3;
+}
+
+.coursebox {
+    position: relative;
+    z-index: 3;
+    background-color: #fff;
+}
+
+.block-add {
+    z-index: 3;
+    position: relative;
+}
+
+.block {
+    z-index: 3;
+}
+```
+
 ### General
 - Enable effects: Turns the effect on or off for the respective season.
 - Particle count: Number of particles visible at the same time.
