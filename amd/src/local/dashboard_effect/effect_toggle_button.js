@@ -21,7 +21,6 @@ import {get_strings as getStrings} from 'core/str';
  * @author     Konrad Ebel <konrad.ebel@oncampus.de>
  * @copyright  2025, onCampus GmbH
  */
-
 export class EffectToggleButton {
     /**
      * Create a new effect toggle button
