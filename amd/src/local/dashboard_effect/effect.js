@@ -24,7 +24,7 @@
  * @copyright  2025, onCampus GmbH
  */
 
-import {get_string as getString} from 'core/str';
+import {EffectToggleButton} from "./effect_toggle_button";
 import {getPluginConfigs} from "../../dashboard_effect";
 import {MoveBehavior} from "./behavior/move_behavior";
 import {FadeBehavior} from "./behavior/fade_behavior";
@@ -38,13 +38,6 @@ export class Effect extends HTMLElement {
      * @type {HTMLElement[]}
      */
     particles = [];
-
-    /**
-     * Tracks whether the particle effect is currently active.
-     *
-     * @type {boolean}
-     */
-    isActive = false;
 
     /**
      * Language string to show when effect can be disabled.
@@ -153,69 +146,18 @@ export class Effect extends HTMLElement {
         this.style.pointerEvents = 'none';
         this.style.zIndex = this.zIndex;
 
-        // Check session storage for saved state.
-        if (sessionStorage.getItem('snowEffectDisabled') === 'true') {
-            this.stop();
+        const enabled = sessionStorage.getItem('snowEffectEnabled') !== 'false';
+        if (enabled) {
+            this.enableAnimation();
         } else {
-            this.start();
+            this.disableAnimation();
         }
 
-        this.loadLanguageStrings()
-            .then(() => {
-                // Add event listener for toggle button.
-                const toggleBtn = document.getElementById('snowfall-toggle-btn');
-                if (!toggleBtn) {
-                    return false;
-                }
-
-                this.setToggleButtonText(toggleBtn);
-
-                const updateState = () => {
-                    const disabled = this.isActive;
-
-                    if (disabled) {
-                        this.stop();
-                    } else {
-                        this.start();
-                    }
-
-                    sessionStorage.setItem('snowEffectDisabled', String(!disabled));
-                    this.setToggleButtonText(toggleBtn);
-                };
-
-                toggleBtn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    updateState();
-                });
-                return true;
-            })
-            .catch(() => {
-                window.console.error("Language string could not be loaded.");
-                return false;
-            });
-    }
-
-    /**
-     * Asynchronously loads the enable/disable language strings for toggling snowfall.
-     *
-     * @returns {Promise<void>}
-     */
-    async loadLanguageStrings() {
-        this.disable = await getString('disable_snowfall', 'local_oc_seasonal_animations');
-        this.enable = await getString('enable_snowfall', 'local_oc_seasonal_animations');
-    }
-
-    /**
-     * Sets the text content of the toggle button based on the active state.
-     *
-     * @param {HTMLElement} toggleBtn - The toggle button element.
-     */
-    setToggleButtonText(toggleBtn) {
-        if (this.isActive) {
-            toggleBtn.textContent = this.disable;
-        } else {
-            toggleBtn.textContent = this.enable;
-        }
+        EffectToggleButton.createAnimationToggleButton(
+            enabled,
+            () => this.enableAnimation(),
+            () => this.disableAnimation()
+        ).then((btn) => {btn.initializeCallbacks();});
     }
 
     /**
@@ -257,8 +199,8 @@ export class Effect extends HTMLElement {
      * Activates the snow effect by displaying the element, creating particles,
      * and starting the animation loop.
      */
-    start() {
-        this.isActive = true;
+    enableAnimation() {
+        sessionStorage.setItem('snowEffectEnabled', 'true');
         this.style.display = 'block';
         this.createParticles();
         this.animateParticles();
@@ -268,8 +210,8 @@ export class Effect extends HTMLElement {
      * Deactivates the snow effect by hiding the element, stopping the animation,
      * and removing all particles.
      */
-    stop() {
-        this.isActive = false;
+    disableAnimation() {
+        sessionStorage.setItem('snowEffectEnabled', 'false');
         this.style.display = 'none';
         if (this.animationFrame) {
             cancelAnimationFrame(this.animationFrame);

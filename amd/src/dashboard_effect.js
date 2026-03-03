@@ -13,9 +13,9 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-import {Effect} from './dashboard_effect/local/effect';
-import {SnowParticle} from './dashboard_effect/local/particle/snow_particle';
-import {ImageParticle} from './dashboard_effect/local/particle/image_particle';
+import {Effect} from './local/dashboard_effect/effect';
+import {SnowParticle} from './local/dashboard_effect/particle/snow_particle';
+import {ImageParticle} from './local/dashboard_effect/particle/image_particle';
 
 let pluginConfigs = {};
 
