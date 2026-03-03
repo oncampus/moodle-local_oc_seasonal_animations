@@ -157,7 +157,12 @@ export class Effect extends HTMLElement {
             enabled,
             () => this.enableAnimation(),
             () => this.disableAnimation()
-        ).then((btn) => {btn.initializeCallbacks();});
+        ).then((btn) => {
+            btn.initializeCallbacks();
+            return true;
+        }).catch(() => {
+            return false;
+        });
     }
 
     /**
