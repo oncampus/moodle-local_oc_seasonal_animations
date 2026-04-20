@@ -43,7 +43,7 @@
 }}
 
 {{#name}}
-<div class="form-text defaultsnext">
+<div class="form-text defaultsnext d-flex align-items-center gap-2">
     <label for="{{name}}_min">{{#str}} min, local_oc_seasonal_animations{{/str}}</label>
     <input
             id="{{name}}_min"
@@ -51,7 +51,7 @@
             name="{{name}}[min]"
             value="{{min}}"
             {{#size}} size="{{size}}" {{/size}}
-            class="form-control ml-1"
+            class="form-control"
            {{#readonly}}disabled{{/readonly}}
     >
     <label for="{{name}}_max">{{#str}} max, local_oc_seasonal_animations{{/str}}</label>
@@ -61,7 +61,7 @@
             name="{{name}}[max]"
             value="{{max}}"
             {{#size}} size="{{size}}" {{/size}}
-            class="form-control ml-1"
+            class="form-control"
            {{#readonly}}disabled{{/readonly}}
     >
 </div>
