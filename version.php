@@ -27,7 +27,7 @@ defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'local_oc_seasonal_animations';
 $plugin->name = 'oncampus GmbH, Seasonal Animations';
-$plugin->version = 2026042001;
+$plugin->version = 2026042002;
 $plugin->requires = 2022041900;
 $plugin->maturity  = MATURITY_STABLE;
-$plugin->release   = 'v2.0.0';
+$plugin->release   = 'v2.1.0';
