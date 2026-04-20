@@ -33,32 +33,50 @@ if (!$hassiteconfig) {
 }
 
 $set = [
-    'local_oc_seasonal_animations' => [get_string('settings:seasonless', 'local_oc_seasonal_animations'), 'seasonless_', [
-
-    ]],
-    'local_oc_seasonal_animations_spring' => [get_string('settings:spring', 'local_oc_seasonal_animations'), 'spring_', [
-        'behavior_move_horizontal_speed' => ['min' => 1, 'max' => 2],
-        'startpos_anchor_bordersite' => ['t', 'l'],
-        'behavior_move_rotation_speed' => ['min' => -3, 'max' => 6],
-    ]],
-    'local_oc_seasonal_animations_summer' => [get_string('settings:summer', 'local_oc_seasonal_animations'), 'summer_', [
-        'start_position' => 'random',
-        'particle_image_size' => ['min' => 20, 'max' => 60],
-        'behavior' => 'fade',
-        'behavior_fade_speed' => ['min' => 4, 'max' => 8],
-    ]],
-    'local_oc_seasonal_animations_autumn' => [get_string('settings:autumn', 'local_oc_seasonal_animations'), 'autumn_', [
-        'behavior_move_horizontal_speed' => ['min' => 1, 'max' => 2],
-        'startpos_anchor_bordersite' => ['t', 'l'],
-        'behavior_move_rotation_speed' => ['min' => -3, 'max' => 3],
-        'behavior_move_vertical_random_span' => ['min' => -1, 'max' => 0],
-        'behavior_move_vertical_random_change' => 0.5,
-    ]],
-    'local_oc_seasonal_animations_winter' => [get_string('settings:winter', 'local_oc_seasonal_animations'), 'winter_', [
-        'particle_type' => 'snow-particle',
-        'behavior_move_horizontal_speed' => ['min' => 0.5, 'max' => 0.5],
-        'layer' => 9999,
-    ]],
+    'local_oc_seasonal_animations' => [
+        get_string('settings:seasonless', 'local_oc_seasonal_animations'),
+        'seasonless',
+        [],
+    ],
+    'local_oc_seasonal_animations_spring' => [
+        get_string('settings:spring', 'local_oc_seasonal_animations'),
+        'spring',
+        [
+            'behavior_move_horizontal_speed' => ['min' => 1, 'max' => 2],
+            'startpos_anchor_bordersite' => ['t', 'l'],
+            'behavior_move_rotation_speed' => ['min' => -3, 'max' => 6],
+        ],
+    ],
+    'local_oc_seasonal_animations_summer' => [
+        get_string('settings:summer', 'local_oc_seasonal_animations'),
+        'summer',
+        [
+            'start_position' => 'random',
+            'particle_image_size' => ['min' => 20, 'max' => 60],
+            'behavior' => 'fade',
+            'behavior_fade_speed' => ['min' => 4, 'max' => 8],
+        ],
+    ],
+    'local_oc_seasonal_animations_autumn' => [
+        get_string('settings:autumn', 'local_oc_seasonal_animations'),
+        'autumn',
+        [
+            'behavior_move_horizontal_speed' => ['min' => 1, 'max' => 2],
+            'startpos_anchor_bordersite' => ['t', 'l'],
+            'behavior_move_rotation_speed' => ['min' => -3, 'max' => 3],
+            'behavior_move_vertical_random_span' => ['min' => -1, 'max' => 0],
+            'behavior_move_vertical_random_change' => 0.5,
+        ],
+    ],
+    'local_oc_seasonal_animations_winter' => [
+        get_string('settings:winter', 'local_oc_seasonal_animations'),
+        'winter',
+        [
+            'particle_type' => 'snow-particle',
+            'behavior_move_horizontal_speed' => ['min' => 0.5, 'max' => 0.5],
+            'layer' => 9999,
+        ],
+    ],
 ];
 
 $overview = new admin_settingpage(
@@ -78,7 +96,8 @@ $ADMIN->add('localplugins', $overview);
 
 foreach ($set as $categoryname => $setinfos) {
     $visiblecatname = $setinfos[0];
-    $settingpre = $setinfos[1];
+    $settingpre = "$setinfos[1]_";
+    $previewpage = new moodle_url('/local_oc_seasonal_animations/preview/' . $setinfos[1]);
     $defaults = $setinfos[2];
 
     $ADMIN->add(
@@ -95,7 +114,7 @@ foreach ($set as $categoryname => $setinfos) {
     $preview = new admin_externalpage(
         "{$categoryname}_preview",
         get_string('settings:overview:preview', 'local_oc_seasonal_animations'),
-        new moodle_url('/local/oc_seasonal_animations/pages/preview.php', ['season' => $settingpre])
+        $previewpage
     );
 
     $particlesubsettings = [];

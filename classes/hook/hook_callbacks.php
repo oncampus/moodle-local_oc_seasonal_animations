@@ -17,6 +17,7 @@
 namespace local_oc_seasonal_animations\hook;
 
 use core\hook\output\before_footer_html_generation;
+use local_oc_seasonal_animations\season;
 use local_oc_seasonal_animations\seasonal_effect;
 
 /**
@@ -54,12 +55,11 @@ class hook_callbacks {
             return;
         }
 
-        $configs = seasonal_effect::get_current_configs();
-        if (!$configs['enabled']) {
+        $season = season::get_current_season();
+        if (!$season->is_animaton_enabled()) {
             return;
         }
-
         $hook->add_html(seasonal_effect::get_seasonal_effect_html());
-        seasonal_effect::render($configs);
+        seasonal_effect::render($season);
     }
 }
