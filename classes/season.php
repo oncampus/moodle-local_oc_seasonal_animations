@@ -1,7 +1,22 @@
 <?php
+// This file is part of Moodle - https://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 namespace local_oc_seasonal_animations;
 
+use coding_exception;
 use context_system;
 use moodle_url;
 
@@ -48,10 +63,22 @@ enum season: string {
         }
     }
 
+    /**
+     * Checks whether the current season animation is enabled
+     *
+     * @return bool True if animation is enabled
+     * @throws \dml_exception
+     */
     public function is_animaton_enabled(): bool {
-        return get_config("{$this->value}_enabled", 'local_oc_seasonal_animations');
+        return (bool) get_config('local_oc_seasonal_animations', "{$this->value}_enabled");
     }
 
+    /**
+     * Get display name of season
+     *
+     * @return string Season display name
+     * @throws coding_exception
+     */
     public function get_label(): string {
         return get_string(
             "settings:$this->value",
@@ -121,6 +148,11 @@ enum season: string {
         return $this->get_standard_particale_image_urls();
     }
 
+    /**
+     * Returns URLs of the preconfigured images of a season
+     *
+     * @return array|null
+     */
     private function get_standard_particale_image_urls(): array|null {
         global $OUTPUT;
 

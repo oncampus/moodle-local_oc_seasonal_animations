@@ -78,6 +78,11 @@ class admin_setting_random_span extends admin_setting {
         if (!is_array($data)) {
             return get_string('validateerror', 'admin');
         }
+
+        if (!isset($data['min'], $data['max'])) {
+            return get_string('validateerror', 'admin');
+        }
+
         $min = trim($data['min']);
         $max = trim($data['max']);
 
@@ -117,7 +122,7 @@ class admin_setting_random_span extends admin_setting {
                 'min' => $constant,
                 'max' => $constant + $random,
             ];
-        } if (!is_array($data)) {
+        } else if (!is_array($data)) {
             throw new ValueError("Value cannot be parsed");
         }
 

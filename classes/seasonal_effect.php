@@ -58,6 +58,7 @@ class seasonal_effect {
      *
      * loads the corresponding AMD module with season-based configurations.
      *
+     * @param season $season Season to render
      * @return void
      */
     public static function render(season $season): void {
