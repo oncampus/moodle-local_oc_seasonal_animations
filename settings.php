@@ -178,7 +178,10 @@ foreach ($set as $categoryname => $setinfos) {
         $preview->get_settings_page_url(),
         new pix_icon('t/hide', get_string('settings:overview:preview', 'local_oc_seasonal_animations')),
         null,
-        ['title' => get_string('settings:overview:preview', 'local_oc_seasonal_animations')]
+        [
+            'title' => get_string('settings:overview:preview', 'local_oc_seasonal_animations'),
+            'data-testid' => 'seasonal-animation-open-preview',
+        ]
     );
     $generalsettings[] = new admin_setting_description(
         "local_oc_seasonal_animations/{$settingpre}preview",
