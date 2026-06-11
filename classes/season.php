@@ -49,7 +49,7 @@ enum season: string {
     }
 
     public function is_animaton_enabled(): bool {
-        return get_config("{$this->value}_enabled", 'local_oc_seasonal_animations');
+        return (bool) get_config('local_oc_seasonal_animations', "{$this->value}_enabled");
     }
 
     public function get_label(): string {
