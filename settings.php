@@ -97,7 +97,7 @@ $ADMIN->add('localplugins', $overview);
 foreach ($set as $categoryname => $setinfos) {
     $visiblecatname = $setinfos[0];
     $settingpre = "$setinfos[1]_";
-    $previewpage = new moodle_url('/local_oc_seasonal_animations/preview/' . $setinfos[1]);
+    $previewpage = moodle_url::routed_path('/local_oc_seasonal_animations/preview/' . $setinfos[1]);
     $defaults = $setinfos[2];
 
     $ADMIN->add(
