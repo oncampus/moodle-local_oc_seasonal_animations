@@ -2,7 +2,7 @@
 Feature: There should be different particle types
 
   Background:
-    Given I log in as "user"
+    Given I log in as "admin"
     And the following config values are set as admin:
       | config                | value | plugin                       |
       | season_change_enabled | 0     | local_oc_seasonal_animations |
