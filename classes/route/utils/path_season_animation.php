@@ -34,6 +34,8 @@ use Psr\Http\Message\ServerRequestInterface;
 class path_season_animation extends path_parameter implements mapped_property_parameter, referenced_object {
     /**
      * Create a new path_season_animation parameter.
+     *
+     * @param string $name Name of the path parameter
      */
     public function __construct(string $name = 'season') {
         $extra = [];
