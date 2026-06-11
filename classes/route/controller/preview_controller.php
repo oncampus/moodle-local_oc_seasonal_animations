@@ -16,6 +16,7 @@
 
 namespace local_oc_seasonal_animations\route\controller;
 
+use coding_exception;
 use context_system;
 use core\context;
 use core\notification;
@@ -31,6 +32,15 @@ use moodle_url;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
+/**
+ * Plugin routes
+ * - Previews for seasonal effects
+ *
+ * @package    local_oc_seasonal_animations
+ * @author     Konrad Ebel <konrad.ebel@oncampus.de>
+ * @copyright  2025, onCampus GmbH
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 class preview_controller {
     use route_controller;
 
@@ -86,6 +96,16 @@ class preview_controller {
         return $response;
     }
 
+    /**
+     * Initializes a standard page
+     *
+     * @param moodle_url $url URL of the page
+     * @param context $ctx Context of the page
+     * @param string $title Title
+     * @param string $heading Heading
+     * @return void
+     * @throws coding_exception
+     */
     private function init_page(
         moodle_url $url,
         context $ctx,

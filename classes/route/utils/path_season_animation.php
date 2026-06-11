@@ -31,7 +31,7 @@ use Psr\Http\Message\ServerRequestInterface;
  * @copyright  2025, onCampus GmbH
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class path_season_animation extends path_parameter implements referenced_object, mapped_property_parameter {
+class path_season_animation extends path_parameter implements mapped_property_parameter, referenced_object {
     /**
      * Create a new path_season_animation parameter.
      */

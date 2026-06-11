@@ -16,6 +16,7 @@
 
 namespace local_oc_seasonal_animations;
 
+use coding_exception;
 use context_system;
 use moodle_url;
 
@@ -62,10 +63,22 @@ enum season: string {
         }
     }
 
+    /**
+     * Checks whether the current season animation is enabled
+     *
+     * @return bool True if animation is enabled
+     * @throws \dml_exception
+     */
     public function is_animaton_enabled(): bool {
         return (bool) get_config('local_oc_seasonal_animations', "{$this->value}_enabled");
     }
 
+    /**
+     * Get display name of season
+     *
+     * @return string Season display name
+     * @throws coding_exception
+     */
     public function get_label(): string {
         return get_string(
             "settings:$this->value",
@@ -135,6 +148,11 @@ enum season: string {
         return $this->get_standard_particale_image_urls();
     }
 
+    /**
+     * Returns URLs of the preconfigured images of a season
+     *
+     * @return array|null
+     */
     private function get_standard_particale_image_urls(): array|null {
         global $OUTPUT;
 
